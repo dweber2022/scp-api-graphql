@@ -1,9 +1,22 @@
+import { readFileSync } from "fs";
+import path from "path";
+
 export class HubDataSource {
-  static #url = "https://scp-data.tedivm.com/data/scp/hubs/index.json";
+  #hubsData;
+
+  constructor() {
+    this.#hubsData = JSON.parse(
+      readFileSync(path.join(__dirname, "../../data/hubs.json"), {
+        encoding: "utf-8",
+      }),
+    );
+  }
 
   async getAllHubs() {
-    const response = await fetch(HubDataSource.#url);
-    const hubsData = await response.json();
-    return Object.values(hubsData);
+    return Object.values(this.#hubsData);
+  }
+
+  async getHubByLink(path: string) {
+    return this.#hubsData[path];
   }
 }
