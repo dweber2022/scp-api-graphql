@@ -4,6 +4,7 @@
   "description": "GraphQL back-end for SCP API",
   "main": "src/index.js",
   "scripts": {
+    "format": "npx prettier . --write",
     "compile": "tsc",
     "dev": "ts-node-dev --respawn ./src/index.ts",
     "start": "npm run compile && nodemon ./dist/index.js"
