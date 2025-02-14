@@ -13,6 +13,12 @@ export const resolvers = {
       path = path.toUpperCase();
       return dataSources.itemDataSource.getItemByPath(path);
     },
+    tales: async (_, __, { dataSources }) => {
+      return dataSources.taleDataSource.getAllTales();
+    },
+    tale: async (_, { path }, { dataSources }) => {
+      return dataSources.taleDataSource.getTaleByPath(path);
+    },
   },
   Hub: {
     createdAt: (parent) => {
@@ -20,6 +26,15 @@ export const resolvers = {
     },
   },
   Item: {
+    createdAt: (parent) => {
+      return parent["created_at"];
+    },
+  },
+  Tale: {
+    title: (parent) => {
+      const suffix = " - SCP Foundation";
+      return parent["title"].slice(0, -suffix.length);
+    },
     createdAt: (parent) => {
       return parent["created_at"];
     },

@@ -10,6 +10,10 @@ export const typeDefs = gql`
     items: [Item!]!
     "Get information about a specific item on the SCP Wiki"
     item(path: String!): Item!
+    "Get all the tales on the SCP Wiki"
+    tales: [Tale!]!
+    "Get information about a specific tale on the SCP Wiki"
+    tale(path: String!): Tale!
   }
 
   "Information about a hub on the SCP Wiki"
@@ -47,6 +51,28 @@ export const typeDefs = gql`
     "A list of paths representing hubs the item is part of"
     hubs: [String!]!
     "A list of paths representing articles and tales that are related to the item"
+    references: [String!]!
+  }
+
+  "Information about a tale on the SCP Wiki"
+  type Tale {
+    "The title of the tale"
+    title: String!
+    "The rating of the tale"
+    rating: Int!
+    "The tags of the tale"
+    tags: [String!]!
+    "The creation date of the tale"
+    createdAt: String!
+    "The creator of the tale"
+    creator: String!
+    "A list of image URLs for each image on the tale page"
+    images: [String!]!
+    "The URL of the tale"
+    url: String!
+    "A list of paths representing hubs the tale is part of"
+    hubs: [String!]!
+    "A list of paths representing articles and tales that are related to the tale"
     references: [String!]!
   }
 `;
