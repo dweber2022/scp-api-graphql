@@ -1,4 +1,5 @@
 import { HubDataSource } from "./datasources/hub";
+import { ItemDataSource } from "./datasources/item";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { typeDefs } from "./schema";
@@ -15,6 +16,7 @@ const startApolloServer = async () => {
       return {
         dataSources: {
           hubDataSource: new HubDataSource(),
+          itemDataSource: new ItemDataSource(),
         },
       };
     },
