@@ -19,6 +19,12 @@ export const resolvers = {
     tale: async (_, { path }, { dataSources }) => {
       return dataSources.taleDataSource.getTaleByPath(path);
     },
+    gois: async (_, __, { dataSources }) => {
+      return dataSources.goiDataSource.getAllGOIs();
+    },
+    goi: async (_, { path }, { dataSources }) => {
+      return dataSources.goiDataSource.getGOIByPath(path);
+    },
   },
   Hub: {
     createdAt: (parent) => {
@@ -35,6 +41,11 @@ export const resolvers = {
       const suffix = " - SCP Foundation";
       return parent["title"].slice(0, -suffix.length);
     },
+    createdAt: (parent) => {
+      return parent["created_at"];
+    },
+  },
+  GOI: {
     createdAt: (parent) => {
       return parent["created_at"];
     },

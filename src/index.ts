@@ -5,6 +5,7 @@ import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { typeDefs } from "./schema";
 import { resolvers } from "./resolvers";
+import { GOIDataSource } from "./datasources/goi";
 
 const startApolloServer = async () => {
   const server = new ApolloServer({
@@ -19,6 +20,7 @@ const startApolloServer = async () => {
           hubDataSource: new HubDataSource(),
           itemDataSource: new ItemDataSource(),
           taleDataSource: new TaleDataSource(),
+          goiDataSource: new GOIDataSource(),
         },
       };
     },
