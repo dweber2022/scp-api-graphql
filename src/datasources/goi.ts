@@ -1,3 +1,4 @@
+import { Goi } from "../generated/graphql";
 import { readFileSync } from "fs";
 import path from "path";
 
@@ -12,11 +13,11 @@ export class GOIDataSource {
     );
   }
 
-  async getAllGOIs() {
+  getAllGOIs(): Goi[] {
     return Object.values(this.#goisData);
   }
 
-  async getGOIByPath(path: string) {
+  getGOIByPath(path: string): Goi {
     return this.#goisData[path];
   }
 }

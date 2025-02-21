@@ -1,3 +1,4 @@
+import { Hub } from "../generated/graphql";
 import { readFileSync } from "fs";
 import path from "path";
 
@@ -12,11 +13,11 @@ export class HubDataSource {
     );
   }
 
-  async getAllHubs() {
+  getAllHubs(): Hub[] {
     return Object.values(this.#hubsData);
   }
 
-  async getHubByLink(path: string) {
+  getHubByLink(path: string): Hub {
     return this.#hubsData[path];
   }
 }

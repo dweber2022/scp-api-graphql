@@ -1,4 +1,6 @@
-export const resolvers = {
+import { Resolvers } from "./generated/graphql";
+
+export const resolvers: Resolvers = {
   Query: {
     hubs: async (_, __, { dataSources }) => {
       return dataSources.hubDataSource.getAllHubs();

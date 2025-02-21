@@ -1,3 +1,4 @@
+import { Tale } from "../generated/graphql";
 import { readFileSync } from "fs";
 import path from "path";
 
@@ -12,11 +13,11 @@ export class TaleDataSource {
     );
   }
 
-  async getAllTales() {
+  getAllTales(): Tale[] {
     return Object.values(this.#talesData);
   }
 
-  async getTaleByPath(path: string) {
+  getTaleByPath(path: string): Tale {
     return this.#talesData[path];
   }
 }

@@ -1,3 +1,4 @@
+import { Item } from "../generated/graphql";
 import { readFileSync } from "fs";
 import path from "path";
 
@@ -12,11 +13,11 @@ export class ItemDataSource {
     );
   }
 
-  async getAllItems() {
+  getAllItems(): Item[] {
     return Object.values(this.#itemsData);
   }
 
-  async getItemByPath(path: string) {
+  getItemByPath(path: string): Item {
     return this.#itemsData[path];
   }
 }
